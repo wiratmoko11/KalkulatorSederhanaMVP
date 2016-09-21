@@ -7,6 +7,8 @@ import android.widget.Button;
 import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity implements CalculatorView {
+    String angka ="";
+
     private TextView display;
 
     private Button btn1;
@@ -54,6 +56,61 @@ public class MainActivity extends AppCompatActivity implements CalculatorView {
                 showDisplay(1);
             }
         });
+
+        btn2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showDisplay(2);
+            }
+        });
+
+        btn3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showDisplay(3);
+            }
+        });
+
+        btn4.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showDisplay(4);
+            }
+        });
+        btn5.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showDisplay(5);
+            }
+        });
+        btn6.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showDisplay(6);
+            }
+        });
+
+        btn7.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showDisplay(7);
+            }
+        });
+        btn8.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showDisplay(8);
+            }
+        });
+        btn9.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showDisplay(9);
+            }
+        });
+
+
+
     }
 
     @Override
@@ -68,6 +125,7 @@ public class MainActivity extends AppCompatActivity implements CalculatorView {
 
     @Override
     public void showDisplay(int angka) {
-        display.setText(angka);
+        this.angka = this.angka+""+angka;
+        display.setText(this.angka);
     }
 }
