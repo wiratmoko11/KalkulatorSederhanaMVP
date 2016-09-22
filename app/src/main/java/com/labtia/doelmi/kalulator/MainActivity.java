@@ -8,6 +8,10 @@ import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity implements CalculatorView {
     String angka ="";
+    int op;
+    double hasil = 0;
+
+    CalculatorPresenter calculatorPresenter;
 
     private TextView display;
 
@@ -32,7 +36,10 @@ public class MainActivity extends AppCompatActivity implements CalculatorView {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+
         //inisilisasi view
+        calculatorPresenter = new CalculatorPresenterImp(this);
+
         display  = (TextView)findViewById(R.id.display);
 
         btn1 = (Button)findViewById(R.id.btn1);
@@ -109,8 +116,21 @@ public class MainActivity extends AppCompatActivity implements CalculatorView {
             }
         });
 
-
-
+        btnTambah.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                op = 1;
+                clearDisplay();
+            }
+        });
+        btnHitung.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(op != 0){
+                    calculatorPresenter.hitung(""+hasil, angka, op);
+                }
+            }
+        });
     }
 
     @Override
@@ -120,12 +140,19 @@ public class MainActivity extends AppCompatActivity implements CalculatorView {
 
     @Override
     public void showHasil(double hasil) {
-
+        display.setText(""+hasil);
     }
 
     @Override
     public void showDisplay(int angka) {
         this.angka = this.angka+""+angka;
+        hasil = Double.parseDouble(this.angka);
         display.setText(this.angka);
+    }
+
+    @Override
+    public void clearDisplay() {
+        this.angka = "";
+        display.setText("");
     }
 }

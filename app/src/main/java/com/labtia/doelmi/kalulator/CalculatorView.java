@@ -9,4 +9,6 @@ public interface CalculatorView {
     void showHasil(double hasil);
 
     void showDisplay(int angka);
+
+    void clearDisplay();
 }
